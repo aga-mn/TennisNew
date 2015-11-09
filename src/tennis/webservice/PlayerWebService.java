@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
+import javax.xml.bind.annotation.XmlElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import tennis.bo.MyBObject;
@@ -37,8 +38,15 @@ public class PlayerWebService {
 	
 	
 	@WebMethod(operationName="getPlayer")
-	public Player getPlayer(@WebParam(name="playerId") int playerId) {
-		return playerService.getPlayer(playerId);
+	public Player getPlayer(@WebParam(name="playerId") String playerId, @WebParam(name="username") String username) {
+		System.out.println("Agata playerId " + playerId +  " username " + username);
+		if (playerId != null) {
+			return playerService.getPlayer(playerId);
+		} else if (username != null) {
+			return playerService.getPlayerByUsername(username);
+		}
+		return null;		
+		//TODO amn - obsługa błędów
 
 	}
 	
@@ -49,7 +57,7 @@ public class PlayerWebService {
 	}
 	
 	@WebMethod(operationName="deletePlayer")
-	public void deletePlayer(@WebParam(name="playerId") int playerId) {
+	public void deletePlayer(@WebParam(name="playerId") String playerId) {
 		Player player = playerService.getPlayer(playerId);
 		playerService.deletePlayer(player);		
 	}
@@ -71,6 +79,23 @@ public class PlayerWebService {
 		player.setUsername(username);
 		player.setGender(gender);
 		playerService.addPlayer(player);
+	}
+	
+	@WebMethod(operationName="modifyPlayer")
+	public void modifyPlayer(@WebParam(name="playerId")String playerId, @WebParam(name="firstName")String name, @WebParam(name="lastName")String lastName, 
+						@WebParam(name="username")String username) {
+		Player player = playerService.getPlayer(playerId);
+		if (username != player.getUsername()) {
+			player.setUsername(username);
+		} 
+		if (name != player.getFirstName()) {
+			player.setFirstName(name);
+		}
+		if (lastName != player.getLastName()) {
+			player.setLastName(lastName);
+		}
+
+		playerService.modifyPlayer(player);
 	}
 	
 }

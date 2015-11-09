@@ -11,7 +11,7 @@ public interface PlayerService {
     List<Player> getAllPlayers();
     void deletePlayer(Player player);
     void modifyPlayer(Player player);
-    Player getPlayer(int playerId);
+    Player getPlayer(String playerId);
     Player getPlayerByUsername(String username);
     List<Player> getPlayersByLastName(String lastName);
 }

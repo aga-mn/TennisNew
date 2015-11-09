@@ -39,10 +39,9 @@ public class PlayerDaoImpl implements PlayerDao {
     }
 
     @Override
-    public Player getPlayer(int playerId) {
-    	System.out.println("Agata " + sessionFactory);
+    public Player getPlayer(String playerId) {
         return (Player) sessionFactory.getCurrentSession().
-                get(Player.class, playerId);
+                get(Player.class, Integer.parseInt(playerId));
     }
 
     @Override

@@ -37,7 +37,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public Player getPlayer(int playerId) {
+    public Player getPlayer(String playerId) {
         return playerDao.getPlayer(playerId);
     }
 
