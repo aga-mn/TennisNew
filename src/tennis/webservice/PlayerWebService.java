@@ -40,6 +40,7 @@ public class PlayerWebService {
 	@WebMethod(operationName="getPlayer")
 	public Player getPlayer(@WebParam(name="playerId") String playerId, @WebParam(name="username") String username) {
 		System.out.println("Agata playerId " + playerId +  " username " + username);
+		//TODO AMN - jakoś to ogarnąć bo słabe toto
 		if (playerId != null) {
 			return playerService.getPlayer(playerId);
 		} else if (username != null) {
@@ -96,6 +97,13 @@ public class PlayerWebService {
 		}
 
 		playerService.modifyPlayer(player);
+	}
+	
+	@WebMethod(operationName="getPlayersByLastName")
+	public Players getPlayersByLastName(@WebParam(name="lastName")String lastName) {
+		List<Player> playersFromDB = playerService.getPlayersByLastName(lastName);
+		players.setPlayers(playersFromDB);
+		return players;
 	}
 	
 }
