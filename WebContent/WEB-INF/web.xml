@@ -19,14 +19,14 @@
   </context-param>
 
    <servlet>
-    	        <servlet-name>spring</servlet-name>
+    	        <servlet-name>jax-ws</servlet-name>
     	       <servlet-class>
     		          com.sun.xml.ws.transport.http.servlet.WSSpringServlet
     	        </servlet-class>
   	</servlet>
 
 	<servlet-mapping>
-                <servlet-name>spring</servlet-name>
+                <servlet-name>jax-ws</servlet-name>
                 <url-pattern>/</url-pattern> <!-- usunięta  scieżka -->
          </servlet-mapping>
 
