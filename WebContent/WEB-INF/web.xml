@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+<web-app         version="3.0"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+<absolute-ordering />
+
   <display-name>JAXWS-Spring</display-name>
+  
+  	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/dataSource-context.xml
+			/WEB-INF/persistance-context.xml
+			/WEB-INF/bean-context.xml
+			<!--  /WEB-INF/security-context.xml -->
+		</param-value>
+  </context-param>
 
    <servlet>
-    	        <servlet-name>jaxws-servlet</servlet-name>
+    	        <servlet-name>spring</servlet-name>
     	       <servlet-class>
     		          com.sun.xml.ws.transport.http.servlet.WSSpringServlet
     	        </servlet-class>
   	</servlet>
 
 	<servlet-mapping>
-                <servlet-name>jaxws-servlet</servlet-name>
-                <url-pattern>/jaxws-spring</url-pattern>
+                <servlet-name>spring</servlet-name>
+                <url-pattern>/</url-pattern> <!-- usunięta  scieżka -->
          </servlet-mapping>
 
          <!-- Register Spring Listener -->
@@ -19,4 +35,5 @@
 
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
     </listener> 
+     
 </web-app>
