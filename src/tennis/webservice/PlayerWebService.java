@@ -65,4 +65,16 @@ public class PlayerWebService {
 		return players;
 
 	}
+	
+	@WebMethod(operationName="addPlayer")
+	public void addPlayer(@WebParam(name="firstName")String name, @WebParam(name="lastName")String lastName, 
+						@WebParam(name="username")String username, @WebParam(name="gender")String gender) {
+		Player player = new Player();
+		player.setFirstName(name);
+		player.setLastName(lastName);
+		player.setUsername(username);
+		player.setGender(gender);
+		playerService.addPlayer(player);
+	}
+	
 }
