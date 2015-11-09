@@ -54,7 +54,8 @@ public class PlayerDaoImpl implements PlayerDao {
         return  player;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Player> getPlayersByLastName(String lastName) {
         Query query = sessionFactory.getCurrentSession().createQuery("from Player where lastName like :lastName ");
         query.setParameter("lastName", "%"+lastName+"%");

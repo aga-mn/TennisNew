@@ -5,11 +5,6 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.CascadeType;
-
-import java.util.Set;
-
 
 @Entity
 @Table (name = "player")

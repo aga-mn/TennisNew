@@ -2,8 +2,6 @@ package tennis.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import tennis.model.Player;
 
 public interface PlayerDao {
