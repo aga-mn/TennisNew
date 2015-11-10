@@ -39,9 +39,9 @@ public class ClubServiceImpl implements ClubService {
         return clubDao.getClub(clubId);
     }
 
-    @Override
-    public List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate, Date toDate) {
-        return clubDao.getTournamentsByClubAndDate(clubId, fromDate, toDate);
-    }
+//    @Override
+//    public List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate, Date toDate) {
+//        return clubDao.getTournamentsByClubAndDate(clubId, fromDate, toDate);
+//    }
 
 }

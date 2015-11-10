@@ -41,17 +41,17 @@ public class ClubDaoImpl implements ClubDao {
         return (Club) sessionFactory.getCurrentSession().get(Club.class, Integer.parseInt(clubId));
     }
 
-    @SuppressWarnings("unchecked")
-	@Override
-    public List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate, Date toDate) {
-        Club club = getClub(clubId);
-        Query query = sessionFactory.getCurrentSession().createQuery
-                ("from Tournament where club=:club and tournamentDate between :fromDate and :toDate");
-                query.setParameter("club", club);
-                query.setParameter("fromDate", fromDate);
-                query.setParameter("toDate", toDate);
-        return query.list();
-    }
+//    @SuppressWarnings("unchecked")
+//	@Override
+//    public List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate, Date toDate) {
+//        Club club = getClub(clubId);
+//        Query query = sessionFactory.getCurrentSession().createQuery
+//                ("from Tournament where club=:club and tournamentDate between :fromDate and :toDate");
+//                query.setParameter("club", club);
+//                query.setParameter("fromDate", fromDate);
+//                query.setParameter("toDate", toDate);
+//        return query.list();
+//    }
 
 /*    @Override
     public List<Tournament> getAllTournamentsByClub(int clubId) {

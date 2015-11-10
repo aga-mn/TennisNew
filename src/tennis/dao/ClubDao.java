@@ -16,7 +16,7 @@ public interface ClubDao {
     void deleteClub(Club club);
     void modifyClub(Club club);
     Club getClub(String clubId);
-    List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate,Date toDate);
+    //List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate,Date toDate);
     //List<Tournament> getAllTournamentsByClub(int clubId);
 
 }
