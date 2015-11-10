@@ -8,8 +8,6 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
-import javax.xml.bind.annotation.XmlElement;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import tennis.bo.MyBObject;
 import tennis.bo.Players;
@@ -86,13 +84,13 @@ public class PlayerWebService {
 	public void modifyPlayer(@WebParam(name="playerId")String playerId, @WebParam(name="firstName")String name, @WebParam(name="lastName")String lastName, 
 						@WebParam(name="username")String username) {
 		Player player = playerService.getPlayer(playerId);
-		if (username != player.getUsername()) {
+		if (!username.equals(player.getUsername())) {
 			player.setUsername(username);
 		} 
-		if (name != player.getFirstName()) {
+		if (!name.equals(player.getFirstName())) {
 			player.setFirstName(name);
 		}
-		if (lastName != player.getLastName()) {
+		if (!lastName.equals(player.getLastName())) {
 			player.setLastName(lastName);
 		}
 
