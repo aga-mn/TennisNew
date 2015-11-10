@@ -12,8 +12,8 @@ public interface ClubService {
     List<Club> getAllClubs();
     void deleteClub(Club club);
     void modifyClub(Club club);
-    Club getClub(int clubId);
-    List<Tournament> getTournamentsByClubAndDate(int clubId, Date fromDate, Date toDate);
+    Club getClub(String clubId);
+    List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate, Date toDate);
     //List<Tournament> getAllTournamentsByClub(int clubId);
 
 }

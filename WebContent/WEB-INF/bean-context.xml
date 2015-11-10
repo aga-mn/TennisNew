@@ -22,17 +22,22 @@
        <tx:annotation-driven transaction-manager="transactionManager"/>
        
 
-    <wss:binding url="/jaxws-spring">
+    <wss:binding url="/player">
         <wss:service>
             <ws:service bean="#playerserviceWs"/>
         </wss:service>
         
     </wss:binding>
-
+    
+        <wss:binding url="/club">
+        <wss:service>
+            <ws:service bean="#clubserviceWS"/>
+        </wss:service>
+        
+    </wss:binding>
 
     <!-- Web service bean -->
-    <bean id="playerserviceWs" class="tennis.webservice.PlayerWebService">
-    </bean>
-
+    <bean id="playerserviceWs" class="tennis.webservice.PlayerWebService" />
+    <bean id="clubserviceWS" class="tennis.webservice.ClubWebService"/>
   
 </beans>

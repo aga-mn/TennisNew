@@ -25,11 +25,11 @@ public class Club {
     @Column(name = "club_description")
     private String description;
 
-    @OneToMany(mappedBy="club")
-    private Set<Player> players;
-
-    @OneToMany(mappedBy = "club")
-    private Set<Tournament> tournaments;
+//    @OneToMany(mappedBy="club")
+//    private Set<Player> players;
+//
+//    @OneToMany(mappedBy = "club")
+//    private Set<Tournament> tournaments;
 
     public String getClubName() {
         return clubName;
@@ -87,21 +87,21 @@ public class Club {
         this.clubId = clubId;
     }
 
-    public Set<Player> getPlayers() {
-        return this.players;
-    }
+    //public Set<Player> getPlayers() {
+    //    return this.players;
+    //}
 
-    public void setPlayers(Set<Player> players) {
-        this.players = players;
-    }
+    //public void setPlayers(Set<Player> players) {
+    //    this.players = players;
+    //}
 
-    public Set<Tournament> getTournaments() {
-        return tournaments;
-    }
-
-    public void setTournaments(Set<Tournament> tournaments) {
-        this.tournaments = tournaments;
-    }
+//    public Set<Tournament> getTournaments() {
+//        return tournaments;
+//    }
+//
+//    public void setTournaments(Set<Tournament> tournaments) {
+//        this.tournaments = tournaments;
+//    }
 
 
     @Override

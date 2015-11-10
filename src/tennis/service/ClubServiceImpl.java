@@ -35,12 +35,12 @@ public class ClubServiceImpl implements ClubService {
         clubDao.modifyClub(club);
     }
 
-    public Club getClub(int clubId) {
+    public Club getClub(String clubId) {
         return clubDao.getClub(clubId);
     }
 
     @Override
-    public List<Tournament> getTournamentsByClubAndDate(int clubId, Date fromDate, Date toDate) {
+    public List<Tournament> getTournamentsByClubAndDate(String clubId, Date fromDate, Date toDate) {
         return clubDao.getTournamentsByClubAndDate(clubId, fromDate, toDate);
     }
 

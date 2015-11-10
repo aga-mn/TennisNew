@@ -17,7 +17,12 @@
         </property>
         <property name="annotatedClasses">
             <list>
+                <value>tennis.model.Club</value>
+                <value>tennis.model.Match</value>
                 <value>tennis.model.Player</value>
+                <value>tennis.model.PlayerProfile</value>
+                <value>tennis.model.PlayerRanking</value>
+                <value>tennis.model.Tournament</value>
             </list>
 
         </property>
