@@ -1,11 +1,18 @@
 package tennis.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-
+@XmlRootElement(name="Player")
+@XmlType(propOrder={"playerId", "lastName", "firstName", "username", "gender"})
 @Entity
 @Table (name = "player")
 public class Player {
@@ -55,6 +62,7 @@ public class Player {
  //       this.club = club;
   //  }
 
+    @XmlElement(name="PlayerUsername")
     public String getUsername() {
         return username;
     }

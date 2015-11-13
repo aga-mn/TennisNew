@@ -1,8 +1,11 @@
 package tennis.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.Set;
 
+@XmlRootElement(name="Club")
 @Entity
 @Table(name = "club")
 public class Club {

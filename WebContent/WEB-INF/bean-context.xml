@@ -21,10 +21,10 @@
 
        <tx:annotation-driven transaction-manager="transactionManager"/>
        
-
-    <wss:binding url="/player">
+    <wss:binding url="/player"  >
         <wss:service>
             <ws:service bean="#playerserviceWs"/>
+    
         </wss:service>
         
     </wss:binding>
@@ -37,7 +37,18 @@
     </wss:binding>
 
     <!-- Web service bean -->
-    <bean id="playerserviceWs" class="tennis.webservice.PlayerWebService" />
-    <bean id="clubserviceWS" class="tennis.webservice.ClubWebService"/>
+    <bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
+    <bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl"/>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
   
 </beans>
