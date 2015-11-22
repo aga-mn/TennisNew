@@ -69,41 +69,12 @@ public class PlayerWebServiceImpl implements PlayerWebService {
 	public void addPlayer(@WebParam(name="firstName")String name, @WebParam(name="lastName")String lastName, 
 			@WebParam(name="username")String username, @WebParam(name="gender")String gender) throws InvalidInputException {
 		Player player = new Player();
-		String charactersOnlyRegex = "[a-zA-Z]+";
-		Pattern pattern = Pattern.compile(charactersOnlyRegex);
-		Matcher matcher = pattern.matcher(name);
-		boolean firstNameMatch = matcher.matches();
-		if (!firstNameMatch) {
-			throw new InvalidInputException("Invalid input", "Name can contain only character");
-		} else {
-			player.setFirstName(name);
-		}
-		matcher = pattern.matcher(lastName);
-		boolean lastNameMatch = matcher.matches();
-		if (!lastNameMatch) {
-			throw new InvalidInputException("Invalid input", "Last name can contain only character");
-		} else {
-			player.setLastName(lastName);
-		}
-		String whiteSpaces = "[a-zA-Z-_.]+";
-		pattern = Pattern.compile(whiteSpaces);
-		matcher = pattern.matcher(username);
-		boolean usernameMatch = matcher.matches();
-		if (!usernameMatch) {
-			throw new InvalidInputException("Invalid input", "Username contains invalid character");
-		} else {
-			player.setUsername(username);
-		}
-		boolean genderMatches = gender.equalsIgnoreCase("male") || gender.equalsIgnoreCase("female");
-		if (!genderMatches) {
-			throw new InvalidInputException("Invalid input", "gender accepts values: male, female");
-		} else {
-			player.setGender(gender);
-		}
-		boolean allDataCorrect = firstNameMatch && lastNameMatch && usernameMatch && genderMatches;
-		if (allDataCorrect) {
-			playerService.addPlayer(player);
-		}		
+		player.setFirstName(name);
+		player.setLastName(lastName);
+		player.setUsername(username);
+		player.setGender(gender);
+		playerService.addPlayer(player);
+
 	}
 	
 	public void modifyPlayer(@WebParam(name="playerId")String playerId, @WebParam(name="firstName")String name, @WebParam(name="lastName")String lastName, 
