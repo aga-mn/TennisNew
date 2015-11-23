@@ -1,6 +1,7 @@
 package tennis.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +33,19 @@ public class MatchServiceImpl implements MatchService {
         matchDao.modifyMatch(match);
     }
 
-    public Match getMatch(int matchId) {
+    public Match getMatch(String matchId) {
         return matchDao.getMatch(matchId);
     }
+
+	@Override
+	public List<Match> getMatchesByPlayer(String playerId) {
+		return matchDao.getMatchesByPlayer(playerId);
+	}
+
+	@Override
+	public List<Match> getMatchesByTwoPlayers(String firstPlayerId,
+			String secondPlayerId) {
+		return matchDao.getMatchesByTwoPlayers(firstPlayerId, secondPlayerId);
+	}
 
 }

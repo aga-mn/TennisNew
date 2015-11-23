@@ -17,5 +17,9 @@ public interface MatchService {
 
     public void modifyMatch(Match match);
 
-    public Match getMatch(int matchId);
+    public Match getMatch(String matchId);
+    
+    public List<Match> getMatchesByPlayer(String playerId);
+    
+    public List<Match> getMatchesByTwoPlayers(String firstPlayerId, String secondPlayerId);
 }

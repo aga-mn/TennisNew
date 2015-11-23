@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:ws="http://jax-ws.dev.java.net/spring/core"
-       xmlns:wss="http://jax-ws.dev.java.net/spring/servlet"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+	xmlns:wss="http://jax-ws.dev.java.net/spring/servlet" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context 
        http://www.springframework.org/schema/context/spring-context.xsd
@@ -15,40 +13,48 @@
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://jax-ws.dev.java.net/spring/servlet 
        http://jax-ws.java.net/spring/servlet.xsd">
-       
-       <context:component-scan base-package="tennis"/>
-       <context:annotation-config/>
 
-       <tx:annotation-driven transaction-manager="transactionManager"/>
-       
-    <wss:binding url="/player"  >
-        <wss:service>
-            <ws:service bean="#playerserviceWs"/>
-    
-        </wss:service>
-        
-    </wss:binding>
-    
-        <wss:binding url="/club">
-        <wss:service>
-            <ws:service bean="#clubserviceWS"/>
-        </wss:service>
-        
-    </wss:binding>
+	<context:component-scan base-package="tennis" />
+	<context:annotation-config />
 
-    <!-- Web service bean -->
-    <bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
-    <bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl"/>
-  
-  
-  
-  
-  
-  
-  
-  
-  
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-  
-  
+	<wss:binding url="/player">
+		<wss:service>
+			<ws:service bean="#playerserviceWs" />
+
+		</wss:service>
+
+	</wss:binding>
+
+	<wss:binding url="/club">
+		<wss:service>
+			<ws:service bean="#clubserviceWS" />
+		</wss:service>
+
+	</wss:binding>
+	
+	<wss:binding url="/match">
+		<wss:service>
+			<ws:service bean="#matchserviceWS" />
+		</wss:service>
+
+	</wss:binding>
+
+	<!-- Web service bean -->
+	<bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
+	<bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl" />
+	<bean id="matchserviceWS" class="tennis.webservice.MatchWebServiceImpl" />
+
+
+
+
+
+
+
+
+
+
+
+
 </beans>

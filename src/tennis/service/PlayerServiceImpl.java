@@ -2,6 +2,8 @@ package tennis.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,7 @@ public class PlayerServiceImpl implements PlayerService {
     @Autowired
     private PlayerDao playerDao;
 
+    @Valid
     @Override
     public void addPlayer(Player player) {
         playerDao.addPlayer(player);
