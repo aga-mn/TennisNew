@@ -42,8 +42,8 @@ public class Tournament {
     @Column(name="number_of_seeds")
     private int numberOfSeeds;
 
-    @OneToMany(mappedBy = "tournament")
-    private Set<Match> matches;
+    //@OneToMany(mappedBy = "tournament")
+    //private Set<Match> matches;
 
     public Club getClub() {
         return club;
@@ -77,13 +77,13 @@ public class Tournament {
         this.numberOfSeeds = numberOfSeeds;
     }
 
-    public Set<Match> getMatches() {
-        return matches;
-    }
-
-    public void setMatches(Set<Match> matches) {
-        this.matches = matches;
-    }
+//    public Set<Match> getMatches() {
+//        return matches;
+//    }
+//
+//    public void setMatches(Set<Match> matches) {
+//        this.matches = matches;
+//    }
 
     public int getTournamentId() {
         return tournamentId;

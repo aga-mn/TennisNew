@@ -2,6 +2,7 @@ package tennis.webservice;
 
 import java.util.List;
 
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class MatchWebServiceImpl implements MatchWebService {
 	private PlayerService playerService;
 
 	@Override
-	public Match getMatch(String matchId) {
+	public Match getMatch(@WebParam(name="matchId") String matchId) {
 		return matchService.getMatch(matchId);
 
 	}
 
 	@Override
-	public Matches getMatchesByPlayer(String username) {
+	public Matches getMatchesByPlayer(@WebParam(name="username") String username) {
 		Player player = playerService.getPlayerByUsername(username);
 		String playerId = Integer.toString(player.getPlayerId());
 		List<Match> matchesFromDB = matchService.getMatchesByPlayer(playerId);
@@ -38,12 +39,12 @@ public class MatchWebServiceImpl implements MatchWebService {
 	}
 
 	@Override
-	public Matches getMatchesByTwoPlayers(String firstPlayerUsername,
-			String secondPlayerUsername) {
+	public Matches getMatchesByTwoPlayers(@WebParam(name="firstPlayerUsername") String firstPlayerUsername, 
+			@WebParam(name="secondPlayerUsername") String secondPlayerUsername) {
 			Player player1 = playerService.getPlayerByUsername(firstPlayerUsername);
 			Player player2 = playerService.getPlayerByUsername(secondPlayerUsername);
-			String firstPlayerId = Integer.toString(player1.getPlayerId());
-			String secondPlayerId = Integer.toString(player2.getPlayerId());
+			//String firstPlayerId = Integer.toString(player1.getPlayerId());
+			//String secondPlayerId = Integer.toString(player2.getPlayerId());
 			List<Match> matchesFromDB = matchService.getMatchesByTwoPlayers(firstPlayerUsername, secondPlayerUsername);
 			Matches matches = new Matches();
 			matches.setMatches(matchesFromDB);
@@ -51,13 +52,21 @@ public class MatchWebServiceImpl implements MatchWebService {
 	}
 
 	@Override
-	public void addMatch(String tournamentId, String firstPlayerId,
-			String secondPlayerId, String numberOfSets, String firstPlayerSet1,
-			String firstPlayerSet2, String firstPlayerSet3,
-			String secondPlayerSet1, String secondPlayerSet2,
-			String secondPlayerSet3, String firstSetTiebreak,
-			String secondSetTiebreak, String thirdSetTiebreak, String walkover,
-			String retirement) {
+	public void addMatch(@WebParam(name="tournamentId") String tournamentId, 
+			@WebParam(name="firstPlayerId") String firstPlayerId,
+			@WebParam(name="secondPlayerId") String secondPlayerId, 
+			@WebParam(name="numberOfSets") String numberOfSets,
+			@WebParam(name="firstPlayerSet1") String firstPlayerSet1, 
+			@WebParam(name="firstPlayerSet2") String firstPlayerSet2,
+			@WebParam(name="firstPlayerSet3") String firstPlayerSet3,
+			@WebParam(name="secondPlayerSet1") String secondPlayerSet1,
+			@WebParam(name="secondPlayerSet2") String secondPlayerSet2,
+			@WebParam(name="secondPlayerSet3") String secondPlayerSet3,
+			@WebParam(name="firstSetTiebreak") String firstSetTiebreak,
+			@WebParam(name="secondSetTiebreak") String secondSetTiebreak,
+			@WebParam(name="thirdSetTiebreak") String thirdSetTiebreak,
+			@WebParam(name="walkover") String walkover,
+			@WebParam(name="retirement") String retirement) {
 		Match match = new Match();
 		Integer setsNum = Integer.parseInt(numberOfSets);
 		match.setNumberOfSets(setsNum);
@@ -91,22 +100,10 @@ public class MatchWebServiceImpl implements MatchWebService {
 	}
 
 	@Override
-	public void deleteMatch(String matchId) {
+	public void deleteMatch(@WebParam(name="matchId") String matchId) {
 		Match match = matchService.getMatch(matchId);
 		matchService.deleteMatch(match);
 
 	}
-
-//	@Override
-//	public void modifyClub(String tournamentId, String firstPlayerId,
-//			String secondPlayerId, String numberOfSets, String firstPlayerSet1,
-//			String firstPlayerSet2, String firstPlayerSet3,
-//			String secondPlayerSet1, String secondPlayerSet2,
-//			String secondPlayerSet3, String firstSetTiebreak,
-//			String secondSetTiebreak, String thirdSetTiebreak, String walkover,
-//			String retirement) {
-//		// TODO Auto-generated method stub
-//
-//	}
 
 }

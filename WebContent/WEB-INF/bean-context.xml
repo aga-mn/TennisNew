@@ -22,9 +22,7 @@
 	<wss:binding url="/player">
 		<wss:service>
 			<ws:service bean="#playerserviceWs" />
-
 		</wss:service>
-
 	</wss:binding>
 
 	<wss:binding url="/club">
@@ -38,13 +36,19 @@
 		<wss:service>
 			<ws:service bean="#matchserviceWS" />
 		</wss:service>
-
+	</wss:binding>
+	
+    <wss:binding url="/tournament">
+		<wss:service>
+			<ws:service bean="#tournamentserviceWs" />
+		</wss:service>
 	</wss:binding>
 
 	<!-- Web service bean -->
 	<bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
 	<bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl" />
 	<bean id="matchserviceWS" class="tennis.webservice.MatchWebServiceImpl" />
+	<bean id="tournamentserviceWs" class="tennis.webservice.TournamentWebServiceImpl" />
 
 
 
