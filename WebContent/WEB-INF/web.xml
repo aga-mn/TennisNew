@@ -11,12 +11,15 @@
   	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
+		
 			/WEB-INF/dataSource-context.xml
 			/WEB-INF/persistance-context.xml
 			/WEB-INF/bean-context.xml
+			
 			<!--  /WEB-INF/security-context.xml -->
 		</param-value>
   </context-param>
+
 
    <servlet>
     	        <servlet-name>jax-ws</servlet-name>
@@ -35,5 +38,4 @@
 
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
     </listener> 
-     
 </web-app>

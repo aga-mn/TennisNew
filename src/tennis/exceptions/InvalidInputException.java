@@ -1,6 +1,6 @@
 package tennis.exceptions;
 
-public class InvalidInputException extends Exception {
+public class InvalidInputException extends RuntimeException {
 	
 	private String errorDetails;
 

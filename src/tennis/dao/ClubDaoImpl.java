@@ -20,6 +20,10 @@ public class ClubDaoImpl implements ClubDao {
     private SessionFactory sessionFactory;
 
     public void addClub(Club club) {
+    	
+    	
+
+    	
         sessionFactory.getCurrentSession().save(club);
     }
 

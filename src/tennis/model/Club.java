@@ -3,6 +3,10 @@ package tennis.model;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import net.sf.oval.constraint.Length;
+import net.sf.oval.constraint.NotEmpty;
+import net.sf.oval.constraint.NotNull;
+
 import java.util.Set;
 
 @XmlRootElement(name="Club")
@@ -15,8 +19,13 @@ public class Club {
     @Column(name = "club_id")
     private int clubId;
 
+    //validation
+    @NotNull(message = "sample.error.not.null")
+    @NotEmpty(message = "sample.error.not.empty")
     @Column(name = "club_name")
+    @Length(max=5)
     private String clubName;
+    @Length(min=100)
     @Column(name = "club_street")
     private String street;
     @Column(name = "club_street_number")

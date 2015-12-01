@@ -5,6 +5,8 @@ import java.util.List;
 import javax.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import net.sf.oval.ConstraintViolation;
+import tennis.oval.*;
 import tennis.bo.Clubs;
 import tennis.model.Club;
 import tennis.service.ClubService;
@@ -15,19 +17,30 @@ public class ClubWebServiceImpl implements ClubWebService {
 	@Autowired
 	private ClubService clubService;
 
+	@Autowired
+	private SpringOvalValidator validator; 
+
+	
 	public Club getClub(String clubId) {
 		return clubService.getClub(clubId);
 	}
 	
 	public void addClub(String clubName, String clubStreet, String clubStreetNumber, String clubPostCode,
 			String clubCity, String clubDescription) {
-			Club club = new Club();
+		
+
+		
+		Club club = new Club();
 			club.setClubName(clubName);
 			club.setStreet(clubStreet);
 			club.setStreetNumber(clubStreetNumber);
 			club.setCity(clubCity);
 			club.setPostCode(clubPostCode);
 			club.setDescription(clubDescription);
+			
+			// collect the constraint violations
+			validator.validate(club, null); 
+			
 			clubService.addClub(club);		
 	}
 	
