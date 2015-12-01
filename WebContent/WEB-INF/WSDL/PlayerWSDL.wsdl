@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://webservice.tennis/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://webservice.tennis/"
+	name="PlayerService">
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://webservice.tennis/" schemaLocation="PlayerSchema.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="addPlayer">
+		<part name="parameters" element="tns:addPlayer" />
+	</message>
+	<message name="addPlayerResponse">
+		<part name="parameters" element="tns:addPlayerResponse" />
+	</message>
+	<message name="InvalidInputException">
+		<part name="fault" element="tns:InvalidInputException" />
+	</message>
+	<message name="getAllPlayers">
+		<part name="parameters" element="tns:getAllPlayers" />
+	</message>
+	<message name="getAllPlayersResponse">
+		<part name="parameters" element="tns:getAllPlayersResponse" />
+	</message>
+	<message name="deletePlayer">
+		<part name="parameters" element="tns:deletePlayer" />
+	</message>
+	<message name="deletePlayerResponse">
+		<part name="parameters" element="tns:deletePlayerResponse" />
+	</message>
+	<message name="NoDataFoundException">
+		<part name="fault" element="tns:NoDataFoundException" />
+	</message>
+	<message name="modifyPlayer">
+		<part name="parameters" element="tns:modifyPlayer" />
+	</message>
+	<message name="modifyPlayerResponse">
+		<part name="parameters" element="tns:modifyPlayerResponse" />
+	</message>
+	<message name="getPlayer">
+		<part name="parameters" element="tns:getPlayer" />
+	</message>
+	<message name="getPlayerResponse">
+		<part name="parameters" element="tns:getPlayerResponse" />
+	</message>
+	<message name="getPlayersByLastName">
+		<part name="parameters" element="tns:getPlayersByLastName" />
+	</message>
+	<message name="getPlayersByLastNameResponse">
+		<part name="parameters" element="tns:getPlayersByLastNameResponse" />
+	</message>
+	<portType name="PlayerWebServiceImpl">
+		<operation name="addPlayer">
+			<input
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/addPlayerRequest"
+				message="tns:addPlayer" />
+			<output
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/addPlayerResponse"
+				message="tns:addPlayerResponse" />
+			<fault message="tns:InvalidInputException" name="InvalidInputException"
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/addPlayer/Fault/InvalidInputException" />
+		</operation>
+		<operation name="getAllPlayers">
+			<input
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getAllPlayersRequest"
+				message="tns:getAllPlayers" />
+			<output
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getAllPlayersResponse"
+				message="tns:getAllPlayersResponse" />
+		</operation>
+		<operation name="deletePlayer">
+			<input
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/deletePlayerRequest"
+				message="tns:deletePlayer" />
+			<output
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/deletePlayerResponse"
+				message="tns:deletePlayerResponse" />
+			<fault message="tns:NoDataFoundException" name="NoDataFoundException"
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/deletePlayer/Fault/NoDataFoundException" />
+		</operation>
+		<operation name="modifyPlayer">
+			<input
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/modifyPlayerRequest"
+				message="tns:modifyPlayer" />
+			<output
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/modifyPlayerResponse"
+				message="tns:modifyPlayerResponse" />
+		</operation>
+		<operation name="getPlayer">
+			<input
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getPlayerRequest"
+				message="tns:getPlayer" />
+			<output
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getPlayerResponse"
+				message="tns:getPlayerResponse" />
+			<fault message="tns:InvalidInputException" name="InvalidInputException"
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getPlayer/Fault/InvalidInputException" />
+		</operation>
+		<operation name="getPlayersByLastName">
+			<input
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getPlayersByLastNameRequest"
+				message="tns:getPlayersByLastName" />
+			<output
+				wsam:Action="http://webservice.tennis//PlayerWebServiceImpl/getPlayersByLastNameResponse"
+				message="tns:getPlayersByLastNameResponse" />
+		</operation>
+	</portType>
+	<binding name="PlayerServicePortBinding" type="tns:PlayerWebServiceImpl">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<operation name="addPlayer">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="InvalidInputException">
+				<soap:fault name="InvalidInputException" use="literal" />
+			</fault>
+		</operation>
+		<operation name="getAllPlayers">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="deletePlayer">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="NoDataFoundException">
+				<soap:fault name="NoDataFoundException" use="literal" />
+			</fault>
+		</operation>
+		<operation name="modifyPlayer">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+		<operation name="getPlayer">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="InvalidInputException">
+				<soap:fault name="InvalidInputException" use="literal" />
+			</fault>
+		</operation>
+		<operation name="getPlayersByLastName">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="PlayerService">
+		<port name="PlayerServicePort" binding="tns:PlayerServicePortBinding">
+			<soap:address location="http://localhost:8080/tennisWEB/player" />
+		</port>
+	</service>
+</definitions>

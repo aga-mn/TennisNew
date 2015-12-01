@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://webservice.tennis/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	version="1.0" targetNamespace="http://webservice.tennis/">
+	<xs:element name="InvalidInputException" type="tns:InvalidInputException" />
+	<xs:element name="NoDataFoundException" type="tns:NoDataFoundException" />
+	<xs:element name="Player" nillable="true" type="xs:anyType" />
+	<xs:element name="addPlayer" type="tns:addPlayer" />
+	<xs:element name="addPlayerResponse" type="tns:addPlayerResponse" />
+	<xs:element name="deletePlayer" type="tns:deletePlayer" />
+	<xs:element name="deletePlayerResponse" type="tns:deletePlayerResponse" />
+	<xs:element name="getAllPlayers" type="tns:getAllPlayers" />
+	<xs:element name="getAllPlayersResponse" type="tns:getAllPlayersResponse" />
+	<xs:element name="getPlayer" type="tns:getPlayer" />
+	<xs:element name="getPlayerResponse" type="tns:getPlayerResponse" />
+	<xs:element name="getPlayersByLastName" type="tns:getPlayersByLastName" />
+	<xs:element name="getPlayersByLastNameResponse" type="tns:getPlayersByLastNameResponse" />
+	<xs:element name="modifyPlayer" type="tns:modifyPlayer" />
+	<xs:element name="modifyPlayerResponse" type="tns:modifyPlayerResponse" />
+	<xs:complexType name="addPlayer">
+		<xs:sequence>
+			<xs:element name="firstName" type="xs:string" minOccurs="1" />
+			<xs:element name="lastName" type="xs:string" minOccurs="1" />
+			<xs:element name="username" type="xs:string" minOccurs="1" />
+			<xs:element name="gender" type="xs:string" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="addPlayerResponse">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="InvalidInputException">
+		<xs:sequence>
+			<xs:element name="faultInfo" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getPlayersByLastName">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getPlayersByLastNameResponse">
+		<xs:sequence>
+			<xs:element name="return" type="tns:players" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="players">
+		<xs:sequence>
+			<xs:element name="players" type="tns:player" nillable="true"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="player">
+		<xs:sequence>
+			<xs:element name="playerId" type="xs:int" />
+			<xs:element name="lastName" type="xs:string" minOccurs="0" />
+			<xs:element name="firstName" type="xs:string" minOccurs="0" />
+			<xs:element name="PlayerUsername" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="gender" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modifyPlayer">
+		<xs:sequence>
+			<xs:element name="playerId" type="xs:string" minOccurs="0" />
+			<xs:element name="firstName" type="xs:string" minOccurs="0" />
+			<xs:element name="lastName" type="xs:string" minOccurs="0" />
+			<xs:element name="username" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modifyPlayerResponse">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getAllPlayers">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="getAllPlayersResponse">
+		<xs:sequence>
+			<xs:element name="return" type="tns:players" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="deletePlayer">
+		<xs:sequence>
+			<xs:element name="arg0" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="deletePlayerResponse">
+		<xs:sequence />
+	</xs:complexType>
+	<xs:complexType name="NoDataFoundException">
+		<xs:sequence>
+			<xs:element name="faultInfo" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getPlayer">
+		<xs:sequence>
+			<xs:element name="username" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getPlayerResponse">
+		<xs:sequence>
+			<xs:element name="return" type="tns:player" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

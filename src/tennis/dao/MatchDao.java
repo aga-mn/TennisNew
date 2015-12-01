@@ -10,6 +10,8 @@ public interface MatchDao {
     List<Match> getAllMatches();
     void deleteMatch(Match match);
     void modifyMatch(Match match);
-    Match getMatch(int matchId);
+    Match getMatch(String matchId);
+    List<Match> getMatchesByPlayer(String playerId);    
+    List<Match> getMatchesByTwoPlayers(String firstPlayerId, String secondPlayerId);
 
 }

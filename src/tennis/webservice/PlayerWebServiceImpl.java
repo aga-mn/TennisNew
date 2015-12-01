@@ -1,25 +1,21 @@
 package tennis.webservice;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sun.xml.ws.developer.SchemaValidation;
-
 import tennis.bo.MyBObject;
 import tennis.bo.Players;
 import tennis.exceptions.InvalidInputException;
 import tennis.exceptions.NoDataFoundException;
+import tennis.model.Player;
 import tennis.service.PlayerService;
-import tennis.model.*;
+
 
 //wsdlLocation = "WEB-INF/WSDL/PlayerWSDL.wsdl", 
-@SchemaValidation
 @WebService( portName="PlayerServicePort", serviceName="PlayerService")
 public class PlayerWebServiceImpl implements PlayerWebService {
 
@@ -40,20 +36,16 @@ public class PlayerWebServiceImpl implements PlayerWebService {
 	
 	@WebMethod(operationName="getPlayer") 
 	public Player getPlayerByUsername (@WebParam(name="username")String username) throws InvalidInputException {
-		if (username == null || username.isEmpty()) {
-			throw new InvalidInputException("Invalid input", "Username cannot be empty");
-		} else {
+
 			return playerService.getPlayerByUsername(username);
-		}		
+		
 	}
 	
 	public void deletePlayer(String username) throws NoDataFoundException {
 		Player player = playerService.getPlayerByUsername(username);
-		if (player == null) {
-			throw new NoDataFoundException("Invalid input", "No data found");
-		} else {
+
 			playerService.deletePlayer(player);
-		}				
+						
 	}
 	
 	public Players getAllPlayers() {
@@ -111,6 +103,7 @@ public class PlayerWebServiceImpl implements PlayerWebService {
 //		if (allDataCorrect) {
 //			playerService.addPlayer(player);
 //		}		
+		playerService.addPlayer(player);
 	}
 	
 	public void modifyPlayer(@WebParam(name="playerId")String playerId, @WebParam(name="firstName")String name, @WebParam(name="lastName")String lastName, 

@@ -2,6 +2,7 @@ package tennis.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,8 +36,26 @@ public class MatchDaoImpl implements MatchDao {
         sessionFactory.getCurrentSession().update(match);
     }
 
-    public Match getMatch(int matchId) {
+    public Match getMatch(String matchId) {
 
-        return (Match) sessionFactory.getCurrentSession().get(Match.class, matchId);
+        return (Match) sessionFactory.getCurrentSession().get(Match.class, Integer.parseInt(matchId));
     }
+
+	public List<Match> getMatchesByPlayer(String playerId) {
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("from Match where player1 = :playerId");
+		query.setParameter("playerId", playerId);
+		return query.list();
+		
+	}
+
+	public List<Match> getMatchesByTwoPlayers(String firstPlayerId,
+			String secondPlayerId) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Match where (player1 = :firstPlayerId and player2 = :secondPlayerId) "
+				+ " or (player1 = :secondPlayerId and player2 = :firstPlayerId)");
+		query.setParameter("firstPlayerId", firstPlayerId);
+		query.setParameter("secondPlayerId", secondPlayerId);
+		return query.list();
+	}
+
 }

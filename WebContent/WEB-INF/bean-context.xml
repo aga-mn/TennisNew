@@ -12,27 +12,18 @@
        http://www.springframework.org/schema/tx 
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://jax-ws.dev.java.net/spring/servlet 
+<<<<<<< HEAD
        http://jax-ws.java.net/spring/servlet.xsd">       
        <context:component-scan base-package="tennis"/>
        <context:annotation-config/>
+=======
+       http://jax-ws.java.net/spring/servlet.xsd">
+>>>>>>> branch 'master' of https://github.com/aga-mn/TennisNew.git
 
-       <tx:annotation-driven transaction-manager="transactionManager"/>
-       
-    <wss:binding url="/player"  >
-        <wss:service>
-            <ws:service bean="#playerserviceWs"/>
-    
-        </wss:service>
-        
-    </wss:binding>
-    
-        <wss:binding url="/club">
-        <wss:service>
-            <ws:service bean="#clubserviceWS"/>
-        </wss:service>
-        
-    </wss:binding>
+	<context:component-scan base-package="tennis" />
+	<context:annotation-config />
 
+<<<<<<< HEAD
     <!-- Web service bean -->
     <bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
     <bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl"/>
@@ -65,7 +56,50 @@
     </bean>
 
 
+=======
+	<tx:annotation-driven transaction-manager="transactionManager" />
+>>>>>>> branch 'master' of https://github.com/aga-mn/TennisNew.git
 
-  
-  
+	<wss:binding url="/player">
+		<wss:service>
+			<ws:service bean="#playerserviceWs" />
+		</wss:service>
+	</wss:binding>
+
+	<wss:binding url="/club">
+		<wss:service>
+			<ws:service bean="#clubserviceWS" />
+		</wss:service>
+
+	</wss:binding>
+	
+	<wss:binding url="/match">
+		<wss:service>
+			<ws:service bean="#matchserviceWS" />
+		</wss:service>
+	</wss:binding>
+	
+    <wss:binding url="/tournament">
+		<wss:service>
+			<ws:service bean="#tournamentserviceWs" />
+		</wss:service>
+	</wss:binding>
+
+	<!-- Web service bean -->
+	<bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
+	<bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl" />
+	<bean id="matchserviceWS" class="tennis.webservice.MatchWebServiceImpl" />
+	<bean id="tournamentserviceWs" class="tennis.webservice.TournamentWebServiceImpl" />
+
+
+
+
+
+
+
+
+
+
+
+
 </beans>

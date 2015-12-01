@@ -7,9 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @XmlRootElement(name="Player")
 @XmlType(propOrder={"playerId", "lastName", "firstName", "username", "gender"})
@@ -26,7 +31,10 @@ public class Player {
     ///kasowanie na raz profilu i pleyera
   //  @Cascade(value= CascadeType.DELETE)
    // private PlayerProfile playerProfile;
-
+    @NotNull(message = "fisrt name cannot be null")
+    @NotEmpty(message = "fisrt name cannot be empty")
+    @Pattern(regexp="[a-zA-Z]+", message = "name contains illegal characters" )
+    //@NotBlank(message = "fisrt name cannot be blank")
     @Column(name = "first_name")
     private String firstName;
 
