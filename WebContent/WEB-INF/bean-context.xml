@@ -1,105 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://jax-ws.dev.java.net/spring/core"
-	xmlns:wss="http://jax-ws.dev.java.net/spring/servlet" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context 
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://jax-ws.dev.java.net/spring/core 
-       http://jax-ws.java.net/spring/core.xsd
-       http://www.springframework.org/schema/tx 
-       http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://jax-ws.dev.java.net/spring/servlet 
-<<<<<<< HEAD
-       http://jax-ws.java.net/spring/servlet.xsd">       
-       <context:component-scan base-package="tennis"/>
-       <context:annotation-config/>
-=======
-       http://jax-ws.java.net/spring/servlet.xsd">
->>>>>>> branch 'master' of https://github.com/aga-mn/TennisNew.git
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ws="http://jax-ws.dev.java.net/spring/core"
+xmlns:wss="http://jax-ws.dev.java.net/spring/servlet" xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://jax-ws.dev.java.net/spring/core 
+      http://jax-ws.java.net/spring/core.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx.xsd
+      http://jax-ws.dev.java.net/spring/servlet 
 
-	<context:component-scan base-package="tennis" />
-	<context:annotation-config />
-
-<<<<<<< HEAD
-    <!-- Web service bean -->
-    <bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
-    <bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl"/>
-  
-  
-  
-  
-    <!--Validation-->
-    <!--configure SLF4J logging for OVal-->
-    <bean name="ovalLog" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="staticMethod" value="net.sf.oval.internal.Log.setLoggerFactory"/>
-        <property name="arguments">
-            <bean class="net.sf.oval.logging.LoggerFactorySLF4JImpl"/>
-        </property>
-    </bean>
-
-  
+      http://jax-ws.java.net/spring/servlet.xsd">       
+      <context:component-scan base-package="tennis"/>
+      <context:annotation-config/>
 
 
-    <!--Setup spring injector for OVal-->
-    <bean name="ovalSpringInjector" class="net.sf.oval.integration.spring.SpringInjector"
-          depends-on="ovalLog"/>
-
-    <!--Setup Spring-aware validator-->
-    <bean name="validator" class="tennis.oval.SpringOvalValidator">
-        <!--  <property name="validator">
-            <bean class="tennis.oval.CheckInjectableValidatorFactoryBean"
-                    depends-on="ovalSpringInjector"/>
-        </property>-->
-    </bean>
+<context:component-scan base-package="tennis" />
+<context:annotation-config />
 
 
-=======
-	<tx:annotation-driven transaction-manager="transactionManager" />
->>>>>>> branch 'master' of https://github.com/aga-mn/TennisNew.git
+   <!-- Web service bean -->
+   <bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
+   <bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl"/>
+ 
+ 
+ 
+ 
+   <!--Validation-->
+   <!--configure SLF4J logging for OVal-->
+   <!--  
+   <bean name="ovalLog" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+       <property name="staticMethod" value="net.sf.oval.internal.Log.setLoggerFactory"/>
+       <property name="arguments">
+           <bean class="net.sf.oval.logging.LoggerFactorySLF4JImpl"/>
+       </property>
+   </bean>
 
-	<wss:binding url="/player">
-		<wss:service>
-			<ws:service bean="#playerserviceWs" />
-		</wss:service>
-	</wss:binding>
-
-	<wss:binding url="/club">
-		<wss:service>
-			<ws:service bean="#clubserviceWS" />
-		</wss:service>
-
-	</wss:binding>
-	
-	<wss:binding url="/match">
-		<wss:service>
-			<ws:service bean="#matchserviceWS" />
-		</wss:service>
-	</wss:binding>
-	
-    <wss:binding url="/tournament">
-		<wss:service>
-			<ws:service bean="#tournamentserviceWs" />
-		</wss:service>
-	</wss:binding>
-
-	<!-- Web service bean -->
-	<bean id="playerserviceWs" class="tennis.webservice.PlayerWebServiceImpl" />
-	<bean id="clubserviceWS" class="tennis.webservice.ClubWebServiceImpl" />
-	<bean id="matchserviceWS" class="tennis.webservice.MatchWebServiceImpl" />
-	<bean id="tournamentserviceWs" class="tennis.webservice.TournamentWebServiceImpl" />
+ -->
 
 
-
-
-
-
-
-
-
-
-
-
-</beans>
+   <!--Setup spring injector for OVal
+   <bean name="ovalSpringInjector" class="net.sf.oval.integration.spring.SpringInjector"
+         depends-on="ovalLog"/>
+-->
+   <!--Setup Spring-aware validator-->
+   <bean name="validator" class="tennis.oval.SpringOvalValidator">
+       <!--  <property name="validator">
+           <bean class="tennis.oval.CheckInjectableValidatorFactoryBean"
+                   depends-on="ovalSpringInjector"/>
+       </property>-->
+   </bean>
+   </beans>
